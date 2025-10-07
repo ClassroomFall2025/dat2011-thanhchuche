@@ -1,6 +1,3 @@
-import json
-import os   
-
 def nhap_nhan_vien():
     print("Nhập danh sách nhân viên và lưu vào file")
 
