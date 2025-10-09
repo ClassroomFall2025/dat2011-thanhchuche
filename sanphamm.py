@@ -5,6 +5,7 @@ class SanPham:
         self.__giam_gia = giam_gia
 
 
+
     def thue_nhap_khau(self):
         return self.gia * 0.1
     def nhap_thong_tin_sp(self):
