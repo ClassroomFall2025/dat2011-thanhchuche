@@ -45,6 +45,11 @@ class SanPham3:
         self.ten_san_pham = ten_san_pham
         self.gia = gia 
         self.giam_gia = giam_gia
+    def nhap(self):
+        self.ten_san_pham = input("nhập tên sản phầm: ")
+        self.gia = float(input("nhập đơn giá: "))
+        self.giam_gia = float(input("nhập giảm giá: "))
+    
     def get_ten_san_pham(self):
         return self.__ten_san_pham
     def set_ten_san_pham(self, ten_san_pham):
