@@ -10,4 +10,4 @@ class Sanpham:
         print(f"Đơn giá: {self.gia:,.0f} VND")
         print(f"Giảm giá: {self.giam_gia:,.0f} VND")
         print(f"Thuế nhập khẩu: {self.tinh_thue_nhap_khau:,.0f} VND")
-        print("===========================") 
+        print("===========================")   
