@@ -1,5 +1,5 @@
 class Sanpham:
-    def __int__(self, ten, gia, giam_gia):
+    def __init__(self, ten, gia, giam_gia):
         self.ten = ten 
         self.gia = gia 
         self.giam_gia = giam_gia
