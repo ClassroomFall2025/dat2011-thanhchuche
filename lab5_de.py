@@ -58,7 +58,10 @@ class SanPham3:
     def get_gia(self):
         return self.__gia 
     def set_gia(self, gia):
-        self.__gia = gia
+        if gia < 0: 
+            print("Giá không hợp lệ!")
+        else:
+            self.__gia = gia 
 
     def get_giam_gia(self):
         return self.__giam_gia
