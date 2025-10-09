@@ -42,9 +42,9 @@ class SanPham2:
 
 class SanPham3:
     def __init__(self, ten_san_pham="", gia=0, giam_gia=0):
-        self.ten_san_pham = ten_san_pham
-        self.gia = gia 
-        self.giam_gia = giam_gia
+        self.__ten_san_pham = ten_san_pham
+        self.__gia = gia 
+        self.__giam_gia = giam_gia
     
     def get_ten_san_pham(self):
         return self.__ten_san_pham
