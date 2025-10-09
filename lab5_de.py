@@ -16,7 +16,7 @@ class SanPham1:
 
 
 
-class SanPham2:
+class SanPham2:  
     def __init__(self, ten_san_pham="", gia=0, giam_gia=0):
         self.ten_san_pham = ten_san_pham
         self.gia = gia 
