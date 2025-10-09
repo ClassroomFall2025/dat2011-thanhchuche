@@ -72,9 +72,7 @@ class SanPham3:
             self.__giam_gia = giam_gia
 
     def tinh_thue_nhap_khau(self):
-        self.__ten_san_pham = input("Nhập tên sản phẩm: ")
-        self.__gia = float(input("Nhập giá sản phẩm: "))
-        self.__giam_gia = float(input("Nhập giảm giá"))
+        return self.__gia * 0.1
 
     def xuat(self):
         print("Tên sản phẩm: {self.__ten_san_pham}")
