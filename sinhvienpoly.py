@@ -40,13 +40,12 @@ class SinhVienIT(SinhVienPoly):
     def get_diem(self):
         return (2* self.diem_java + self.diem_html + self.diem_css) / 4
     
-    class SinhVienBiz(SinhVienPoly):
-        def __init__(self, ho_ten, diem_marketing, diem_sales):
-            super().__init__(ho_ten, "Kinh doanh")
-            self.diem_marketing = diem_marketing
-            self.diem_sales = diem_sales
+class SinhVienBiz(SinhVienPoly):
+    def __init__(self, ho_ten, diem_marketing, diem_sales):
+        super().__init__(ho_ten, "Kinh doanh")
+        self.diem_marketing = diem_marketing
+        self.diem_sales = diem_sales
 
-        def get_diem(self):
-            return (2 * self.diem_marketing + self.diem_sales) / 3
-        
+    def get_diem(self):
+        return (2 * self.diem_marketing + self.diem_sales) / 3
         
