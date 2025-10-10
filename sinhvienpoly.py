@@ -1,10 +1,11 @@
-from abc import ABC, abstractmethod
+from abc import ABC, abstractmethod 
 
 class sinhvienpoly(ABC):
-    def __init__(self, ho_ten, nghanh):
+    def __init__(self, ho_ten, nganh):
         self.ho_ten = ho_ten
-        self.nghanh = nghanh 
+        self.nganh = nganh 
 
+    @abstractmethod 
     def get_diem(self):
         pass
 
@@ -23,7 +24,7 @@ class sinhvienpoly(ABC):
         
     def xuat(self):
         print(f"Họ tên: {self.ho_ten}")
-        print(f"Nghành: {self.nghanh}")
+        print(f"Nghành: {self.nganh}")
         print(f"Điểm: {self.get_diem():.2f}")
         print(f"Học lực: {self.get_hoc_luc()}")
 
