@@ -29,7 +29,7 @@ def nhap_danh_sach():
         ds_sinhvien.append(Sinhvien(ho_ten, diem))
 
 def xuat_danh_sach():
-    if not ds_sinhvien():
+    if not ds_sinhvien:
         print("chưa có sinh viên nào được nhập")
         return
     for sv in ds_sinhvien:
