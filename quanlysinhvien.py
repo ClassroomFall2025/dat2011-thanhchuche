@@ -4,7 +4,7 @@ class Sinhvien:
         self.diem = diem 
 
     def get_hoc_luc(self):
-        if self.diem >= 0:
+        if self.diem >= 8:
             return "Học lực giỏi"
         elif self.diem >= 6.5:
             return "Học lực khá"
