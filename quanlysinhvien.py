@@ -25,7 +25,15 @@ def nhap_danh_sach():
     for i in range(n):
         print(f"-- sinh vien {i+1} --")
         ho_ten = input("Họ tên: ")
-        diem = float(input("Điểm: "))
+        while True:
+            try:
+                diem = float(input("Điểm (0-10): "))
+                if 0 <= diem <= 10:
+                    break
+                else:
+                    print("Điểm nằm trong khoảng 0 đến 10. Vui lòng nhập lại")
+            except ValueError:
+                print("Vui lòng nhập số hợp lệ ")
         ds_sinhvien.append(Sinhvien(ho_ten, diem))
 
 def xuat_danh_sach():
