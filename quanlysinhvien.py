@@ -21,7 +21,6 @@ class Sinhvien:
 ds_sinhvien = []
 
 def nhap_danh_sach():
-    ds_sinhvien.clear()
     n = int(input("Nhập số lượng sinh viên: "))
     for i in range(n):
         print(f"-- sinh vien {i+1} --")
