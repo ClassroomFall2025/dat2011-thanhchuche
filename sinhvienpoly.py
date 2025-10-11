@@ -1,9 +1,5 @@
 
-class SinhVienPoly(ABC):
-    def __init__(self, ho_ten, nganh):
-        self.ho_ten = ho_ten
-        self.nganh = nganh 
-
+class SinhVienPoly: 
     def get_diem(self):
         pass
 
