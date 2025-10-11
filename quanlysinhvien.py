@@ -21,6 +21,7 @@ class Sinhvien:
 ds_sinhvien = []
 
 def nhap_danh_sach():
+    ds_sinhvien.clear()
     n = int(input("Nhập số lượng sinh viên: "))
     for i in range(n):
         print(f"-- sinh vien {i+1} --")
@@ -40,7 +41,7 @@ def xuat_sv_gioi():
         print("--- Danh sách sinh viên giỏi ---")
         found = False 
         for sv in ds_sinhvien:
-            if sv.get_hoc_luc() == "Giỏi":
+            if sv.get_hoc_luc() == "Học lực giỏi":
                 sv.xuat()
                 found = True 
         if not found:
