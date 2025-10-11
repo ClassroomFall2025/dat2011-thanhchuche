@@ -1,11 +1,5 @@
 class ChuNhat:
     def __init__(self, dai, rong):
-        if dai < 0:
-            print("Chiều dài lớn hơn hoặc bằng 0")
-            dai = 0
-        if rong < 0:
-            print("Chiều rộng lớn hơn hoặc bằng 0")
-            rong = 0
         self.dai = dai
         self.rong = rong
 
@@ -27,9 +21,6 @@ class ChuNhat:
 
 class Vuong(ChuNhat):
     def __init__(self, canh):
-        if canh < 0:
-            print("Cạnh lớn hơn hoặc bằng 0")
-            canh = 0
         super().__init__(canh, canh)
         self.canh = canh 
    
