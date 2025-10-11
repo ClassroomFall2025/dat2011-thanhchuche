@@ -83,18 +83,18 @@ class SanPham3:
         print("==================")
 
     
-#class SanPham4:
- #   def __init__(self, _ten_sp, _gia, _giam_gia):
-  #      self.ten_sp = _ten_sp
-   #     self.gia = _gia 
-    #    self.giam_gia = _giam_gia 
-#
- #   def xuat(self):
-  #      print(f"Tên sản phẩm: {self.ten_sp}")
-   #     print(f"Giá: {self.gia}")
-    #    print(f"Giảm giá: {self.giam_gia}")
-     #   print(f"Giá sau giảm: {self.gia - self.giam_gia}")
-     #   print("-" * 30)
+class SanPham4:
+    def __init__(self, _ten_sp, _gia, _giam_gia):
+        self.ten_sp = _ten_sp
+        self.gia = _gia 
+        self.giam_gia = _giam_gia 
+
+    def xuat(self):
+        print(f"Tên sản phẩm: {self.ten_sp}")
+        print(f"Giá: {self.gia}")
+        print(f"Giảm giá: {self.giam_gia}")
+        print(f"Giá sau giảm: {self.gia - self.giam_gia}")
+        print("-" * 30)
 
 
     
