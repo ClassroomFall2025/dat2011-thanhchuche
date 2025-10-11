@@ -37,9 +37,6 @@ def xuat_danh_sach():
         sv.xuat()
 
 def xuat_sv_gioi():
-    if not ds_sinhvien:
-        print("chưa có sinh viên nào được nhập")
-        return
     print("--- Danh sách sinh viên giỏi ---")
     found = False 
     for sv in ds_sinhvien:
