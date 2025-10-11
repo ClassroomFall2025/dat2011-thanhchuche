@@ -38,14 +38,16 @@ def xuat_danh_sach():
 
 def xuat_sv_gioi():
     if not ds_sinhvien:
-        print("--- Danh sách sinh viên giỏi ---")
-        found = False 
-        for sv in ds_sinhvien:
-            if sv.get_hoc_luc() == "Học lực giỏi":
-                sv.xuat()
-                found = True 
-        if not found:
-            print("Không có sinh viên giỏi")
+        print("chưa có sinh viên nào được nhập")
+        return
+    print("--- Danh sách sinh viên giỏi ---")
+    found = False 
+    for sv in ds_sinhvien:
+        if sv.get_hoc_luc() == "Học lực giỏi":
+            sv.xuat()
+            found = True 
+    if not found:
+        print("Không có sinh viên giỏi")
         
 def sap_xep_theo_diem():
     ds_sinhvien.sort(key=lambda x: x.diem, reverse = True)
