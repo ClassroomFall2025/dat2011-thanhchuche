@@ -1,11 +1,9 @@
-from abc import ABC, abstractmethod 
 
 class SinhVienPoly(ABC):
     def __init__(self, ho_ten, nganh):
         self.ho_ten = ho_ten
         self.nganh = nganh 
 
-    @abstractmethod 
     def get_diem(self):
         pass
 
@@ -49,3 +47,5 @@ class SinhVienBiz(SinhVienPoly):
     def get_diem(self):
         return (2 * self.diem_marketing + self.diem_sales) / 3
         
+
+
