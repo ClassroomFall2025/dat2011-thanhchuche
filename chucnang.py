@@ -92,3 +92,54 @@ def xuat_danh_sach(ds):
     print("-" * 80)
     for nv in ds:
         print(nv)
+
+def tim_theo_ma(ds):
+    ma = input("Nhập mã nhân viên cần tìm: ")
+    found = [nv for nv in ds if nv.ma == ma]
+    if found:
+        xuat_danh_sach(found)
+    else: 
+        print("không tìm thấy nhân viên")
+
+def xoa_theo_ma(ds):
+    ma = input("Nhập mã nhân viên cần xóa: ")
+    for nv in ds:
+        if nv.ma == ma:
+            ds.remove(nv)
+            print("Đã xóa nhân viên.")
+            return
+    print("Không tìm thấy nhân viên.")
+
+def cap_nhat_thong_tom(ds):
+    ma = input("Nhập mã nhân viên cần cập nhât: ")
+    for nv in  ds:
+        if nv.ma == ma:
+            nv.ho_ten = input("Nhập họ tên mới: ") or nv.ho_ten
+            luong_moi = input("Nhập lương mới: ")
+            if luong_moi:
+                nv.luong = float(luong_moi)
+            print("đã cập nhật thành công thông tin thành công.")
+            return
+    print("Không tìm thấy nhân viên.")
+
+
+def tim_theo_khoang_luong(ds):
+    min_1 = float(input("Nhập lương tối thiểu: "))
+    max_1 = float(input("Nhập lương tối đa: "))
+    ket_qua = [nv for nv in ds if min_1 <= nv.luong <= max_1]
+    xuat_danh_sach(ket_qua) if ket_qua else print ("không có nhân viên trong khoảng này.")
+
+def sap_xep_theo_ho_teh(ds):
+    ds.sort(key=lambda nv: nv.ho_ten)
+    print("Đã sắp xếp theo họ tên.")
+    xuat_danh_sach(ds)
+
+def sap_xep_theo_thu_nhap(ds):
+    ds.sort(key=lambda nv: nv.tinh_thu_nhap(), reverse = True)
+    print("Đã sắp xếp theo thu nhập.")
+    xuat_danh_sach(ds)
+
+def top5_thu_nhap(ds):
+    ds_top = sorted(ds, key = lambda nv: nv.tinh_thu_nhap(), reverse = True)[:5]
+    print(f"\n top 5 nhân viên có thu nhật cao nhất là: ")
+    xuat_danh_sach(ds_top)
