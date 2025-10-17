@@ -18,161 +18,77 @@
 #    print("Y9. Xuất 5 nhân viên có thu nhập cao nhất.")
 
 
-import csv 
-FILE_NAME = "nhanvien.csv"
-
-class NhanVien:
-    def __init__(self, ma_nv, ho_ten , luong):
-        self.ma_nv = ma_nv
+class nhanvien:
+    def __init__(self, ma, ho_ten, luong):
+        self.ma = ma
         self.ho_ten = ho_ten
         self.luong = float(luong)
-    
+
     def tinh_thu_nhap(self):
-        return self.luong 
+        return self.luong
     
-    def tinh_thue_thu_nhap(self):
+    def tinh_thue(self):
         thu_nhap = self.tinh_thu_nhap()
         if thu_nhap < 9000000:
             return 0
         elif thu_nhap <= 15000000:
-            return thu_nhap * 0.1
+            return (thu_nhap - 9000000) * 0.1
         else:
-            return thu_nhap * 0.12 
+            return (thu_nhap - 15000000) * 0.12 + (15000000 - 9000000) * 0.1
         
-    def to_list(self):
-        return [self.ma_nv, self.ho_ten, self.luong, "","","", self.tinh_thu_nhap(), self.tinh_thue_thu_nhap(), self.__class__.__name__]
+
+    def __str__(self):
+        return f"{self.ma:10} | {self.ho_ten:25} | {self.luong:10,.0f} | {self.tinh_thu_nhap():12,.0f} | {self.tinh_thue():10,.0f}"
+
+class nhanvientiepthi(nhanvien):
+    def __init__(self, ma, ho_ten, luong, doanh_so, hoa_hong):
+        super().__init__(ma, ho_ten, luong)
+        self.doanh_so = float(doanh_so)
+        self.hoa_hong = float(hoa_hong)
+
+    def tinh_thu_nhap(self):
+        return self.luong + self.doanh_so * self.hoa_hong
     
 
-class NhanVienHanhChinh(NhanVien):
-    pass
-
-class TruongPhong(NhanVien):
-    def __init__(self, ma_nv, ho_ten, luong, luong_trach_nhiem):
-        super().__init__(ma_nv, ho_ten, luong)
+class truongphong(nhanvien):
+    def __init__(self, ma, ho_ten, luong, luong_trach_nhiem):
+        super().__init__(ma, ho_ten,luong)
         self.luong_trach_nhiem = float(luong_trach_nhiem)
 
     def tinh_thu_nhap(self):
         return self.luong + self.luong_trach_nhiem
     
-    def to_list(self):
-        return [self.ma_nv, self.ho_ten, self.luong, "","", self.luong_trach_nhiem, self.tinh_thu_nhap(), self.tinh_thue_thu_nhap(), self.__class__.__name__]
-
-class NhanVienTiepThi(NhanVien):
-    def __init__(self, ma_nv, ho_ten, luong, doanh_so, hoa_hong):
-        super().__init__(ma_nv, ho_ten, luong)
-        self.doanh_so = float(doanh_so)
-        self.hoa_hong = float(hoa_hong)
-
-    def tinh_thu_nhap(self):
-        return self.luong + self.doanh_so * self.hoa_hong / 100
-    
-    def to_list(self):
-        return [self.ma_nv, self.ho_ten, self.luong, self.doanh_so, self.hoa_hong, "", self.tinh_thu_nhap(), self.tinh_thue_thu_nhap(), self.__class__.__name__]
-    
-
-def ghi_file_csv(ds_nv):
-    with open(FILE_NAME, mode = 'w', newline = '', encoding = 'utf-8') as f:
-        writer = csv.writer(f)
-        writer.writerow(["Mã NV", "Họ Tên ", "Lương", "Doanh số", "Hoa Hồng", "Lương TN", "Thu Nhập", "Thuế", "Loại NV"])
-        for nv in ds_nv:
-            writer.writerow(nv.to_list())
-
-def doc_file_csv():
-    ds_nv = []
-    try:
-        with open(FILE_NAME, mode='r', encoding='utf-8') as f:
-            reader = csv.DictReader(f)
-            for row in reader:
-                loai = row["Loại NV"]
-                ma = row["Mã NV"]
-                ho_ten = row["Họ Tên"]  # đã chuẩn hóa
-                luong = row["Lương"]
-
-                if loai == "NhanVienHanhChinh":
-                    nv = NhanVienHanhChinh(ma, ho_ten, luong)
-                elif loai == "TruongPhong":
-                    nv = TruongPhong(ma, ho_ten, luong, row["Lương TN"])
-                elif loai == "NhanVienTiepThi":
-                    nv = NhanVienTiepThi(ma, ho_ten, luong, row["Doanh số"], row["Hoa Hồng"])
-                ds_nv.append(nv)
-    except FileNotFoundError:
-        pass
-    return ds_nv
-
 
 def nhap_danh_sach():
     ds = []
-    n = int(input("Nhập số lượng nhân viên: "))
+    n = int(input("nhập số lượng nhân viên: "))
     for i in range(n):
-        print(f"\n --- Nhân viên {i+1} ---")
-        loai = input("Loại (1-HC, 2-TT, 3-TP): ")
-        ma = input("Mã NV: ")
-        ten = input("Họ tên: ")
-        luong = float(input("Lương: "))
+        print(f"\n--- Nhân viên {i+1} ---")
+        loai = input("Loại (1-Hành chính, 2-Tiếp thị, 3-Trưởng phòng): ")
+        ma = input("Mã nhân viên: ")
+        ho_ten = input("Họ tên: ")
+        luong = float(input("Lương cơ bản: "))
 
         if loai == "1":
-            nv = NhanVienHanhChinh(ma, ten, luong)
+            nv = nhanvien(ma, ho_ten, luong)
         elif loai == "2":
             doanh_so = float(input("Doanh số: "))
-            hoa_hong = float(input("Tỉ lệ Hoa Hồng (%): "))
-            nv = NhanVienTiepThi(ma, ten, luong, doanh_so, hoa_hong)
+            hoa_hong = float(input("Tỉ lệ hoa hồng: "))
+            nv = nhanvientiepthi(ma, ho_ten, luong, doanh_so, hoa_hong)
+        elif loai == "3":
+            luong_trach_nhiem = float(input("Lương trách nhiệm: "))
+            nv = truongphong(ma, ho_ten, luong, luong_trach_nhiem)
         else: 
-            luong_tn = float(input("Lương trách nhiệm: "))
-            nv = TruongPhong(ma, ten, luong, luong_tn)
-        ds.append(nv)
+            print("loại không hợp lệ")
+            continue
 
-    ghi_file_csv(ds)
-    print("Đã lưu danh sách vào file csv.")
+        ds.append(nv)
+    
+    print("\n Đã nhập xong danh sách.")
+    return ds
 
 def xuat_danh_sach(ds):
-    if not ds:
-        print("Danh sách trống.")
-        return 
-    print(f"\n {'Mã NV':<10}")
-    print(f"\n{'Họ Tên':<20}")
-    print(f"\n{'Thu Nhập':>15}")
-    print(f"\n{'Thuế':>15}")
+    print("\n{:<10} | {:<25} | {:>10} | {:>12} | {:>10}".format("Mã", "Họ tên", "Lương", "Thu nhập", "Thuế"))
+    print("-" * 80)
     for nv in ds:
-        print(f"{nv.ma_nv:<10}{nv.ho_ten:<20}{nv.tinh_thu_nhap():>15,.0f}{nv.tinh_thue_thu_nhap():>15,.0f}")
-    
-def tim_theo_ma(ds):
-    ma = input("Nhập mã nhân viên cần tìm: ")
-    for nv in ds:
-        if nv.ma_nv == ma:
-            print(f"Tìm thấy: {nv.ho_ten} - Thu nhập: {nv.tinh_thu_nhap():,.0f}")
-            return
-        print("Không tìm thấy nhân viên nào trong danh sách.")
-
-def xoa_thoe_ma(ds):
-    ma = input("Nhập mã nhân viên cần xóa: ")
-    ds_moi = [nv for nv in ds if nv.ma_nv != ma]
-    ghi_file_csv(ds_moi)
-    print("đã cập nhật file sau khi xóa.")
-
-def cap_nhap_thong_tin(ds):
-    ma = input("Nhập mã nhân viên cần cập nhật: ")
-    for nv in ds:
-        if nv.ma_nv == ma:
-            nv.ho_ten = input("Nhập họ tên mới: ") or nv.ho_ten
-            nv.luong = float(input("Nhập lương mới: ")) or nv.luong
-            print("Đã cập nhật thông tin.")
-            break
-    ghi_file_csv(ds)
-
-def tim_theo_khoang_luong(ds):
-    min_1 = float(input("Nhập Lương tối thiểu: "))
-    max_1 = float(input("nhập lương tối đa: "))
-    kq = [nv for nv in ds if min_1 <= nv.tinh_thu_nhap() <= max_1]
-    xuat_danh_sach(kq)
-
-def sap_xep_theo_ten(ds):
-    ds.sort(key = lambda nv: nv.ho_ten.split()[-1])
-    xuat_danh_sach(ds)
-
-def sap_xep_theo_thu_nhap(ds):
-    ds.sort(key = lambda nv: nv.tinh_thu_nhap(), reverse = True)
-    xuat_danh_sach(ds)
-
-def top_5(ds):
-    ds_top = sorted(ds, key = lambda nv: nv.tinh_thu_nhap(), reverse = True)[:5]
-    xuat_danh_sach(ds)
+        print(nv)
