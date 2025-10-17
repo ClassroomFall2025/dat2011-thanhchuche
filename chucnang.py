@@ -34,7 +34,7 @@ class NhanVien:
         thu_nhap = self.tinh_thu_nhap()
         if thu_nhap < 9000000:
             return 0
-        elif thu_nhap <= 150000000:
+        elif thu_nhap <= 15000000:
             return thu_nhap * 0.1
         else:
             return thu_nhap * 0.12 
@@ -89,7 +89,7 @@ def doc_file_csv():
                 elif loai == "TruongPhong":
                     nv = TruongPhong(row["Mã NV"], row["Họ Tên"], row["Lương"], row["Lương TN"])
                 elif loai == "NhanVienTiepThi":
-                    nv = NhanVienTiepThi(row["Mã NV"], row["Họ Tên"], row["Lương"], row["Doanh Số"], row["Hoa Hồng"])
+                    nv = NhanVienTiepThi(row["Mã NV"], row["họ tên."], row["Lương"], row["Doanh Số"], row["Hoa Hồng"])
                 ds_nv.append(nv)
     except FileNotFoundError:
         pass
