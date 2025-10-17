@@ -158,7 +158,7 @@ def cap_nhap_thong_tin(ds):
 def tim_theo_khoang_luong(ds):
     min_1 = float(input("Nhập Lương tối thiểu: "))
     max_1 = float(input("nhập lương tối đa: "))
-    kq = [nv for nv in ds if min_1 <= nv.tinh_thu_nhap() <= max]
+    kq = [nv for nv in ds if min_1 <= nv.tinh_thu_nhap() <= max_1]
     xuat_danh_sach(kq)
 
 def sap_xep_theo_ten(ds):
