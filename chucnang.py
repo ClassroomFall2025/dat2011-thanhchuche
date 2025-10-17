@@ -80,16 +80,20 @@ def ghi_file_csv(ds_nv):
 def doc_file_csv():
     ds_nv = []
     try:
-        with open(FILE_NAME, mode = 'r', encoding = 'utf-8') as f:
+        with open(FILE_NAME, mode='r', encoding='utf-8') as f:
             reader = csv.DictReader(f)
             for row in reader:
                 loai = row["Loại NV"]
+                ma = row["Mã NV"]
+                ho_ten = row["Họ Tên"]  # đã chuẩn hóa
+                luong = row["Lương"]
+
                 if loai == "NhanVienHanhChinh":
-                    nv = NhanVienHanhChinh(row["Mã NV"], row["Họ Tên"], row["Lương"])
+                    nv = NhanVienHanhChinh(ma, ho_ten, luong)
                 elif loai == "TruongPhong":
-                    nv = TruongPhong(row["Mã NV"], row["Họ Tên"], row["Lương"], row["Lương TN"])
+                    nv = TruongPhong(ma, ho_ten, luong, row["Lương TN"])
                 elif loai == "NhanVienTiepThi":
-                    nv = NhanVienTiepThi(row["Mã NV"], row["họ tên."], row["Lương"], row["Doanh Số"], row["Hoa Hồng"])
+                    nv = NhanVienTiepThi(ma, ho_ten, luong, row["Doanh số"], row["Hoa Hồng"])
                 ds_nv.append(nv)
     except FileNotFoundError:
         pass
