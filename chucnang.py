@@ -58,9 +58,9 @@ class truongphong(nhanvien):
     def tinh_thu_nhap(self):
         return self.luong + self.luong_trach_nhiem
     
+ds = []
 
 def nhap_danh_sach():
-    ds = []
     n = int(input("nhập số lượng nhân viên: "))
     for i in range(n):
         print(f"\n--- Nhân viên {i+1} ---")
@@ -87,7 +87,10 @@ def nhap_danh_sach():
     print("\n Đã nhập xong danh sách.")
     return ds
 
-def xuat_danh_sach(ds):
+def xuat_danh_sach():
+    if not ds:
+        print("Danh sách nhân viên trống.")
+        return
     print("\n{:<10} | {:<25} | {:>10} | {:>12} | {:>10}".format("Mã", "Họ tên", "Lương", "Thu nhập", "Thuế"))
     print("-" * 80)
     for nv in ds:
@@ -110,7 +113,7 @@ def xoa_theo_ma(ds):
             return
     print("Không tìm thấy nhân viên.")
 
-def cap_nhat_thong_tom(ds):
+def cap_nhat_thong_tin(ds):
     ma = input("Nhập mã nhân viên cần cập nhât: ")
     for nv in  ds:
         if nv.ma == ma:
@@ -129,7 +132,7 @@ def tim_theo_khoang_luong(ds):
     ket_qua = [nv for nv in ds if min_1 <= nv.luong <= max_1]
     xuat_danh_sach(ket_qua) if ket_qua else print ("không có nhân viên trong khoảng này.")
 
-def sap_xep_theo_ho_teh(ds):
+def sap_xep_theo_ho_te(ds):
     ds.sort(key=lambda nv: nv.ho_ten)
     print("Đã sắp xếp theo họ tên.")
     xuat_danh_sach(ds)
