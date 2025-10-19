@@ -119,7 +119,7 @@ def xoa_theo_ma():
 
 def cap_nhat_thong_tin():
     ma = input("Nhập mã nhân viên cần cập nhât: ")
-    for nv in  ds:
+    for nv in ds:
         if nv.ma == ma:
             nv.ho_ten = input("Nhập họ tên mới ({nv.ho_ten}): ") or nv.ho_ten
             luong_moi = input("Nhập lương mới ({nv.luong}): ")
