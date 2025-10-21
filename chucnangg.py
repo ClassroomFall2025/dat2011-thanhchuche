@@ -119,3 +119,70 @@ class giaidoan2:
         print("\n Top 5 nhân viên có thu nhập cao nhất.")
         for nv in top5:
             print(nv)
+
+
+#=====================================================================
+
+import csv 
+import os 
+
+file_name = "nhanvien.csv"
+giai_doan = giaidoan2()
+
+def luu_file():
+    with open(file_name, mode = 'w', newline =' ', encoding = 'utf-8') as f:
+        writer = csv.writer(f)
+        writer.writerow(["ma", "ho_ten", "loai", "luong", "doanh_so", "hoa_hong", "luong_trach_nhiem"])
+        for nv in giai_doan.ds_nv:
+            if isinstance(nv, giaidoan2.tiepthi):
+                writer.writerow([nv.ma, nv.ho_ten, "tiepthi", nv.luong, nv.doanh_so, nv.hoa_hong, ""])
+            elif isinstance(nv, giaidoan2.truongphong):
+                writer.writerow([nv.ma, nv.ho_ten, "truongphong", nv.luong, "", "", nv.luong_trach_nhiem])
+            else:
+                writer.writerow([nv.ma, nv.ho_ten, "hanhchinh", nv.luong, "", "", ""])
+    print("Đã lưu danh sách nhân viên vào file.")
+
+def doc_file():
+    if not os.path.exists(file_name):
+        print("file không tồn tại.")
+        return
+    giai_doan.ds_nv.clear()
+    with open(file_name, mode = 'r', encoding = 'utf-8') as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            loai = row["loai"]
+            if loai == "tiepthi":
+                nv = giaidoan2.tiepthi(row["ma"], row["ho_ten"], float(row["luong"]), float(row["doanh_so"]), float(row["hoa_hong"]))
+            elif loai == "truongphong":
+                nv = giaidoan2.truongphong(row["ma"], row["ho_ten"], float(row["luong"]), float(row["luong_trach_nhiem"]))
+            else:
+                nv = giaidoan2.nhanvien(row["ma"], row["ho_ten"], float(row["luong"]))
+            giai_doan.ds_nv.append(nv)
+        print("Xuất file thành công")
+
+def xoa_nhan_vien():
+    ma = input("Nhập mã nhân viên cần xóa: ")
+    for nv in giai_doan.ds_nv:
+        if nv.ma == ma:
+            giai_doan.ds_nv.remove(nv)
+            print("Đã xáo nhân viên.")
+            luu_file()
+            return
+    print("Không tìm thấy nhân viên có mã bạn nhập.")
+
+def cap_nhap_nhan_vien():
+    ma = input("Nhập mã nhân viên cần cập nhật: ")
+    for nv in giai_doan.ds_nv:
+        if nv.ma == ma:
+            nv.ho_ten = input("Nhập họ tên mới: ") or nv.ho_ten
+            nv.luong = float(input("Nhập lương mới: ") or nv.luong)
+            if isinstance(nv, giaidoan2.tiepthi):
+                nv.doanh_so = float(input("Nhập doanh số mới: ") or nv.doanh_so)
+                nv.hoa_hong = float(input("Nhập hoa hồng mới: ") or nv.hoa_hong)
+            elif isinstance(nv, giaidoan2.truongphong):
+                nv.luong_trach_nhiem = float(input("Nhập lương trách nhiệm mới: ") or nv.luong_trach_nhiem)
+            print("Đã cập nhật thông tin nhân viên.")
+            luu_file()
+            return 
+    print("Không tìm thấy nhân viên có mã bạn nhập.")
+    
