@@ -1,6 +1,6 @@
 import sinhvien_abc as sv
 
-class QuanLYSV:
+class QuanLySV:
     def __init__(self):
         self.ds_sv = []
 
