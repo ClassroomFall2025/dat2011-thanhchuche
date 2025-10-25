@@ -115,7 +115,7 @@ class giaidoan2:
         print("\n Đã sắp xếp theo thu nhập.")
 
     def top_5_thu_nhap(self):
-        top5 = sorted(self.ds_nv, key=lambda nv: nv.get_thu_nhap(), reverse = True)[-5]
+        top5 = sorted(self.ds_nv, key=lambda nv: nv.get_thu_nhap(), reverse = True)[0:5]
         print("\n Top 5 nhân viên có thu nhập cao nhất.")
         for nv in top5:
             print(nv)
