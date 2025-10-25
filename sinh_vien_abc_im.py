@@ -18,13 +18,13 @@ class QuanLySV:
                     diem_css = float(input("nhập điểm css: "))
                     diem_sql = float(input("nhập điểm sql: "))
                     sinh_vien = sv.SinhVienCNTT(ho_ten, ma_so_sv, nghanh_hoc, diem_web, diem_css, diem_sql)
-                    self.ds_sv(sinh_vien)
-                elif nghanh_hoc.lower() == "XLDL":
+                    self.ds_sv.append(sinh_vien)
+                elif nghanh_hoc.lower() == "xldl":
                     diem_python = float(input("nhập điểm python: "))
                     diem_numpy = float(input("nhập điểm numpy: "))
                     diem_pandas = float(input("nhập điểm pandas: "))
                     sinh_vien = sv.SinhVienCNTT(ho_ten, ma_so_sv, nghanh_hoc, diem_python, diem_numpy, diem_pandas)
-                    self.ds_sv(sinh_vien)
+                    self.ds_sv.append(sinh_vien)
         return self.ds_sv
     def xuat_dssv(self):
         if not self.ds_sv:
@@ -32,4 +32,4 @@ class QuanLySV:
             return
         print(f'{"Họ tên":<20} | {"Mã số sinh viên":<10} | {"nghành học":<20} | {"điểm":<10} | {"học lực":<15}')
         for sinh_vien in self.ds_sv:
-            sv.xuat()               
+            sinh_vien.xuat()               

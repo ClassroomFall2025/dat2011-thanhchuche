@@ -60,7 +60,7 @@ class SinhVienCNTT(Sinhvien):
         self.__sql = sql_moi
 
     def get_diem(self):
-        return (self.get_web() * 0.2 + self.get_css * 0.35 + self.get_sql * 0.45)
+        return (self.get_web() * 0.2 + self.get_css() * 0.35 + self.get_sql() * 0.45)
     
 class SinhVienXLDL(Sinhvien):
     def __init__(self, ho_ten, ma_so_sv, nghanh_hoc, diem_python, diem_numpy, diem_pandas):
@@ -85,6 +85,6 @@ class SinhVienXLDL(Sinhvien):
         self.__pandas = pandas_moi
 
     def get_diem(self):
-        return (self.get_python() * 0.2 + self.get_numpy * 0.35 + self.get_pandas * 0.45)
+        return (self.get_python() * 0.2 + self.get_numpy() * 0.35 + self.get_pandas() * 0.45)
     
     
