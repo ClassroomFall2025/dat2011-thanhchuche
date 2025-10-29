@@ -30,7 +30,7 @@ class QuanLySV:
         if not self.ds_sv:
             print("danh sách rỗng")
             return
-        print(f'{"Họ tên":<20} | {"Mã số sinh viên":<10} | {"nghành học":<20} | {"điểm":<10} | {"học lực":<15}')
+        print(f'{"Họ tên":<20} | {"Mã số sinh viên":<10} | {"nghành học":<20} | {"điểm":10} | {"học lực":15}')
         for sinh_vien in self.ds_sv:
             sinh_vien.xuat()
 
@@ -40,7 +40,7 @@ class QuanLySV:
             return
         ds_sv_gioi = [sv for sv in self.ds_sv if sv.get_hoc_luc() == "giỏi"]
 
-        print(f'{"Họ tên":<20} | {"Mã số sinh viên":<20} | {"nghành học":<20} | {"điểm":<10} | {"học lực":<15}')  
+        print(f'{"Họ tên":<20} | {"Mã số sinh viên":<20} | {"nghành học":<20} | {"điểm":10} | {"học lực":15}')  
         for sinh_vien in ds_sv_gioi:
             sinh_vien.xuat()
     def sap_xep_dssv(self):
@@ -48,7 +48,7 @@ class QuanLySV:
         if not self.ds_sv:
             print("danh sách rỗng")
             return 
-        print(f'{"Họ tên":<20} | {"Mã số sinh viên":<10} | {"nghành học":<20} | {"điểm":<10} | {"học lực":<15}')
+        print(f'{"Họ tên":<20} | {"Mã số sinh viên":<10} | {"nghành học":<20} | {"điểm":10} | {"học lực":15}')
         for sinh_vien in self.ds_sv:
             sinh_vien.xuat()
             
