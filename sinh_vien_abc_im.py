@@ -49,6 +49,6 @@ class QuanLySV:
             print("danh sách rỗng")
             return 
         print(f'{"Họ tên":<20} | {"Mã số sinh viên":<10} | {"nghành học":<20} | {"điểm":10} | {"học lực":15}')
-        for sinh_vien in self.ds_sv:
+        for sinh_vien in ds_sv_sap_xep:
             sinh_vien.xuat()
             
