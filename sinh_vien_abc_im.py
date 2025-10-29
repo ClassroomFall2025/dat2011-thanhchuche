@@ -34,7 +34,7 @@ class QuanLySV:
         for sinh_vien in self.ds_sv:
             sinh_vien.xuat()
 
-    def xuat_dssv_gioi(self):
+    def xuat_ds_sv_gioi(self):
         if not self.ds_sv:
             print("Danh sách rống")
             return
