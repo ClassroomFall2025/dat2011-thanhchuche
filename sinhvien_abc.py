@@ -34,7 +34,7 @@ class Sinhvien:
         return ho_luc
       
     def xuat(self):
-        print(f'{self.get_ho_ten():<20} | {self.get_ma_so_sv():<10} | {self.get_nghanh_hoc():<20} | {self.get_diem():<10} | {self.get_hoc_luc():<15}')
+        print(f'{self.get_ho_ten():<20} | {self.get_ma_so_sv():<20} | {self.get_nghanh_hoc():<20} | {self.get_diem():<10.2f} | {self.get_hoc_luc():<15}')
 
 
 class SinhVienCNTT(Sinhvien):
