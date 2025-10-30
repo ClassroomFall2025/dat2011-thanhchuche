@@ -16,11 +16,11 @@ class QuanLySach:
                 nha_xuat_ban = input("Nhập nhà xuất bản: ")
                 gia_goc = float(input("Nhập giá gốc: "))
                 da_ban = int(input("Nhập số lượng bán: "))
-                if loai.lower() == "KH":
+                if loai.lower() == "kh":
                     linh_vuc = input("Nhập lĩnh vực nghiên cứu: ")
                     sach = sv.SachKhoaHoc(ma_sach, ten_sach, nha_xuat_ban, gia_goc, da_ban, linh_vuc)
                     self.ds_sach.append(sach)
-                elif loai.lower() == "TT":
+                elif loai.lower() == "tt":
                     ten_tac_gia = input("Nhập tên tác giả: ")
                     sach = sv.SachTieuThuyet(ma_sach, ten_sach, nha_xuat_ban, gia_goc, da_ban, ten_tac_gia)
                     self.ds_sach.append(sach)
