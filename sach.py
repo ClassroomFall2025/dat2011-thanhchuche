@@ -44,7 +44,7 @@ class Sach:
         return da_ban
       
     def xuat(self):
-        print(f"{self.__ma_sach:<10} | {self.__ten_sach:<20} | {self.__nha_xuat_ban:<15} | {self.__gia_goc:<10,.0f} | {self.__da_ban():<10} | {self.danh_gia_pho_bien():<12} | {self.tinh_gia_ban():<10,.0f}")
+        print(f"{self.get_ma_sach:<10} | {self.get_ten_sach:<20} | {self.get_nha_xuat_ban:<15} | {self.get_gia_goc:<10,.0f} | {self.get_da_ban():<10} | {self.danh_gia_pho_bien():<12} | {self.tinh_gia_ban():<10,.0f}")
 
 
 class SachKhoaHoc(Sach):
