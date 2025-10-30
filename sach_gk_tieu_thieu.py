@@ -29,7 +29,7 @@ class QuanLySach:
         if not self.ds_sach:
             print("danh sách rỗng")
             return
-        print(f'{"Mã sách":<10} | {"Tên sách":<25} | {"Nhà xuất bản":<15} | {"Giá gốc":<10} | {"SL bán":<10} | {"Giá bán":<10} | {"Đánh giá":<12}')
+        print(f'{"Mã sách":<10} | {"Tên sách":<25} | {"Nhà xuất bản":<20} | {"Giá gốc":<10} | {"SL bán":<8} | {"Giá bán":<12} | {"Đánh giá":<12}')
         for sach in self.ds_sach:
             sach.xuat()
 
@@ -39,7 +39,7 @@ class QuanLySach:
             return
         ds_sach_ban_chay = [sach for sach in self.ds_sach if sach.danh_gia_pho_bien() == "Bán chạy"]
 
-        print(f'{"Mã sách":<10} | {"Tên sách":<25} | {"Nhà xuất bản":<15} | {"Giá gốc":<10} | {"SL bán":<10} | {"Giá bán":<10} | {"Đánh giá":<12}')
+        print(f'{"Mã sách":<10} | {"Tên sách":<25} | {"Nhà xuất bản":<20} | {"Giá gốc":<10} | {"SL bán":<8} | {"Giá bán":<12} | {"Đánh giá":<12}')
         for sach in ds_sach_ban_chay:
             sach.xuat()
     def sap_xep_sach(self):
@@ -47,7 +47,7 @@ class QuanLySach:
         if not self.ds_sach:
             print("danh sách rỗng")
             return 
-        print(f'{"Mã sách":<10} | {"Tên sách":<25} | {"Nhà xuất bản":<15} | {"Giá gốc":<10} | {"SL bán":<10} | {"Giá bán":<10} | {"Đánh giá":<12}')
+        print(f'{"Mã sách":<10} | {"Tên sách":<25} | {"Nhà xuất bản":<20} | {"Giá gốc":<10} | {"SL bán":<8} | {"Giá bán":<12} | {"Đánh giá":<12}')
         for sach in ds_sach_sap_xep:
             sach.xuat()
             
