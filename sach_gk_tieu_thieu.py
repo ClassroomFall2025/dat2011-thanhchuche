@@ -21,8 +21,8 @@ class QuanLySach:
                     sach = sv.SachKhoaHoc(ma_sach, ten_sach, nha_xuat_ban, gia_goc, da_ban, linh_vuc)
                     self.ds_sach.append(sach)
                 elif loai.lower() == "TT":
-                    linh_vuc = input("Nhập tên tác giả: ")
-                    sach = sv.SachTieuThuyet(ma_sach, ten_sach, nha_xuat_ban, gia_goc, da_ban, linh_vuc)
+                    ten_tac_gia = input("Nhập tên tác giả: ")
+                    sach = sv.SachTieuThuyet(ma_sach, ten_sach, nha_xuat_ban, gia_goc, da_ban, ten_tac_gia)
                     self.ds_sach.append(sach)
         return self.ds_sach
     def xuat_ds_sach(self):
