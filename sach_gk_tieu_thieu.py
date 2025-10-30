@@ -6,7 +6,7 @@ class QuanLySach:
 
     def nhap_danh_sach(self):
         while True:
-            loai = input("Nhập loại sách (KH và TT) (nhập 'exit' để thoát): ")
+            loai = input("Nhập loại sách (KH và TT) (nhập 'exit' để thoát): ").strip().lower()
             if loai == "exit":
                 print("Nhập thành công")
                 break

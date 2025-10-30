@@ -23,28 +23,28 @@ class Sach:
 
     def get_gia_goc(self):
         return self.__gia_goc
-    def set_nha_xuat_ban(self, gia_moi):
+    def set_gia_goc(self, gia_moi):
         self.__gia_goc = gia_moi
 
     def get_da_ban(self):
         return self.__da_ban
-    def set_nha_xuat_ban(self, da_ban):
+    def set_da_ban(self, da_ban):
         self.__da_ban = da_ban
 
     def tinh_gia_ban(self):
         pass
 
     def danh_gia_pho_bien(self):
-        if self.__da_ban() >= 5000:
-            da_ban = "Bán chạy"
-        elif self.__da_ban() >= 1000:
-            da_ban = "Phổ biến"
+        if self.__da_ban >= 5000:
+            danh_gia = "Bán chạy"
+        elif self.__da_ban >= 1000:
+            danh_gia = "Phổ biến"
         else:
-            da_ban = "Ít phổ biến"
-        return da_ban
+            danh_gia = "Ít phổ biến"
+        return danh_gia
       
     def xuat(self):
-        print(f"{self.get_ma_sach:<10} | {self.get_ten_sach:<20} | {self.get_nha_xuat_ban:<15} | {self.get_gia_goc:<10,.0f} | {self.get_da_ban():<10} | {self.danh_gia_pho_bien():<12} | {self.tinh_gia_ban():<10,.0f}")
+        print(f"{self.get_ma_sach():<10} | {self.get_ten_sach():<20} | {self.get_nha_xuat_ban():<15} | {self.get_gia_goc():<10,.0f} | {self.get_da_ban():<10} | {self.danh_gia_pho_bien():<12} | {self.tinh_gia_ban():<10,.0f}")
 
 
 class SachKhoaHoc(Sach):
